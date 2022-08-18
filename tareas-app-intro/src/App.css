@@ -1,0 +1,57 @@
+.padre {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #1f2224;
+}
+
+.formulario {
+  background-color: #1f2224;
+  border-radius: 10px;
+  width: 250px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.tituloForm{
+    text-align: center;
+}
+
+input[type=text], textarea{
+    width: 100%;
+    padding: 10px 8px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.agregar {
+    width: 100%;
+    background-color: cadetblue;
+    color: white;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.eliminar {
+  background-color: #e63946;
+  padding: 2px 10px;
+  border: #e63946;
+  border-radius: 5px;
+}
+
+.eliminar:hover{
+    background-color: #d6606a;
+}
