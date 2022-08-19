@@ -1,4 +1,4 @@
-# Proyecto de tareas con React, con los conocimientos basicos
+# App de tareas, conocimientos basicos
 
 `npm create-react-app 'nombre-proyecto'`
 Utilización de create-react-app para crear un proyecto
@@ -12,4 +12,5 @@ Realizar pruebas
 `npm run build`
 Cuando el proyecto este terminado, para crear el codigo de producción (crea carpeta 'build')
 
-`npm run eject`
+`npm run eject` 
+No definido
