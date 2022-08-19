@@ -7,6 +7,6 @@ Correr la aplicación
 Realizar pruebas al proyecto
 
 ### `npm run build`
-Proyecto terminado, creación de carpeta build
+Cuando el proyecto este terminado, para crear el codigo de producción (crea carpata 'build')
 
 ### `npm run eject`
