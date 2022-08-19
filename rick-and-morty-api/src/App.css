@@ -1,0 +1,55 @@
+.contenedor {
+  margin: 25px auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+h3 {
+  height: 40px;
+  margin: 5px;
+}
+
+.personaje {
+  width: 200px;
+  margin-bottom: 50px;
+}
+
+img {
+  width: 80%;
+  border-radius: 95px;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.contenedor-pag {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.paginacion {  
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.paginacion p {
+  font-size: 1.2em;
+  margin: 15px;
+  font-weight: bold;
+}
+
+/* Se le pone como 'important' para que lo tome, sin embargo no es lo adecuado */
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root, .MuiPaginationItem-root {
+  color: white !important;
+}
