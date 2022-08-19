@@ -1,0 +1,65 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  gap: 15px;
+}
+
+.formulario {
+  padding: 20px;
+}
+
+input[type=text], button{
+  padding: 5px;
+  font-size: 1rem;
+}
+
+input[type=checkbox]{
+  width: 18px;
+}
+
+.checkHecho{
+  background-color: red;
+  padding: 50px;
+}
+
+
+.tituloListado{
+  color: white;
+  background-color: burlywood;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  background-color: cadetblue;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  padding: 10px;
+}
+
+.realizado {
+  display: flex;
+  padding: 15px;
+  background-color: red;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  background-color: burlywood;
+}
+
+.realizado button {
+  background-color: crimson;
+  color: white;
+  border: 1px solid crimson;
+  border-radius: 5px;
+}
+
+.realizado button:hover {
+  background-color: white;
+  color: crimson;
+}
