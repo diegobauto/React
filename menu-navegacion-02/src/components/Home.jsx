@@ -1,7 +1,8 @@
+//Componente basico de Inicio
 export const Home = () => {
   return (
     <div>
-      <h2>Inicio Component</h2>
+      <h1>Componente Inicio </h1>
     </div>
   );
 };

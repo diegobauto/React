@@ -1,3 +1,4 @@
+//Componente basico de Persona
 export const Persona = () => {
   return (
     <div>

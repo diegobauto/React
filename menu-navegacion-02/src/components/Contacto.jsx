@@ -1,3 +1,4 @@
+//Componente simple de Contacto
 export const Contacto = () => {
   return (
     <div>

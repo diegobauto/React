@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+// Hooks
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router";
 
+//Se le asigna un valor a la variable para ponerla en el estado de 'usuario'
 const estadoInicial = {
   id: null,
   name: "",
@@ -24,44 +26,44 @@ const estadoInicial = {
     bs: "e-enable strategic applications",
   },
 };
-export const Usuario = () => {
-  console.log(useParams());
-  const { id } = useParams();
 
+export const Usuario = () => {
+  const { id } = useParams(); //Obtiene el valor del parametro que llega por url
+
+  //Estado para el usuario
+  const [usuario, setUsuario] = useState(estadoInicial); 
+
+  //Cuando el id cambia se ejecuta nuevamente 'obtenerDatosUsuario'
   useEffect(() => {
     obtenerDatosUsuario(id);
   }, [id]);
 
+  //Obtiene información de una API
   const obtenerDatosUsuario = async (idUser) => {
     const pathUrl = `https://jsonplaceholder.typicode.com/users/${idUser}`;
     const respuesta = await fetch(pathUrl);
     const user = await respuesta.json();
-    console.log(user);
     setUsuario(user);
   };
 
-  const [usuario, setUsuario] = React.useState(estadoInicial);
-
-  console.log(useHistory());
+  /*Nos dice todo acerca de dónde se encuentra actualmente el usuario, 
+  como el nombre de la ruta en la que se encuentra, así como cualquier 
+  parámetro de consulta que pueda agregarse a nuestra URL*/
   const history = useHistory();
   const handleClick = () => {
-    history.push("/lista-usuarios");
+    history.push("/lista-usuarios");  //Permite ir a una nueva direccion url
   };
 
   return (
     <div>
+      {/* Simplemente se imprime los valores del usuario */}
       <h3>Usuario ID: {id}</h3>
-      <strong>Nombre: {usuario.name}</strong>
-      <br />
-      <strong>Email: {usuario.email}</strong>
-      <br />
-      <strong>Username: {usuario.username}</strong>
-      <br />
-      <strong>Direccion: {usuario.address.street}</strong>
-      <br />
-
+      <p>Nombre: {usuario.name}</p>
+      <p>Email: {usuario.email}</p>
+      <p>Username: {usuario.username}</p>
+      <p>Direccion: {usuario.address.street}</p>
+      {/* pre permite visualizar el JSON asi en varias lineas */}
       <pre>{JSON.stringify(usuario, null, 2)}</pre>
-
       <button onClick={handleClick}>Regresar</button>
     </div>
   );

@@ -16,3 +16,4 @@
 4. material-ui
 5. rick-and-morty-api
 6. menu-navegacion-01
+7. menu-navegacion-02
