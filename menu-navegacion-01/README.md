@@ -1,6 +1,5 @@
 # Menu de navegacion
-## Permite la navegación, incluso pasando parametros(id) en la 
-## dirección url para luego obtenerla en otro componente
+## Permite la navegación, incluso pasando parametros(id) en la dirección url para luego obtenerla en otro componente
 
 `npm create-react-app 'nombre-proyecto'`
 Utilización de create-react-app para crear un proyecto
