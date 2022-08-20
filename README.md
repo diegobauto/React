@@ -9,7 +9,8 @@
 6. Clonar el repositorio `git clone $nombre del repositorio`
 
 > Orden de proyectos
-1. tareas-app-intro
-2. tareas-localStorage
-3. material-ui
-4. rick-and-morty-api
+1. primeros-pasos
+2. tareas-app-intro
+3. tareas-localStorage
+4. material-ui
+5. rick-and-morty-api
