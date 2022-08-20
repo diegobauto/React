@@ -1,4 +1,4 @@
-# Aplicación Rick and Morty con API REST 
+# Appp de Rick and Morty con API REST 
 
 ## Proyecto creado con Vite
 `npm create vite`

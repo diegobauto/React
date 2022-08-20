@@ -1,6 +1,6 @@
-# Menu de navegación con NavLink
+# App de x-men con API REST
 
->Si, queremos agregar algunos estilos al Link. De modo que cuando hacemos clic en cualquier enlace en particular, se puede identificar fácilmente qué enlace está activo. Para este enrutador de reacción, proporciona NavLink en lugar de Link . Ahora reemplace Link from Navlink y agregue propiedades activeStyle . Las propiedades activeStyle significan que cuando hacemos clic en el enlace, debe resaltarse con un estilo diferente para que podamos diferenciar qué enlace está actualmente activo
+> Se utiliza un loading para el momento en que carga la API
 
 `npx create-react-app 'nombre-proyecto'`
 Utilización de create-react-app para crear un proyecto
@@ -24,3 +24,7 @@ No definido
 
 `npm install react-router-dom`
 Instala la version mas reciente
+
+### Bootstrap
+`npm i bootstrap@5.2.0`
+Instalar bbootstrap
