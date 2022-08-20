@@ -1,4 +1,6 @@
-# App de tareas, conocimientos basicos
+# Menu de navegación
+
+### Descripcion
 
 `npx create-react-app 'nombre-proyecto'`
 Utilización de create-react-app para crear un proyecto

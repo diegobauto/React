@@ -1,5 +1,8 @@
 # App de tareas con localStorage
 
+`npx create-react-app 'nombre-proyecto'`
+Utilización de create-react-app para crear un proyecto
+
 `npm start`
 Correr la aplicación
 

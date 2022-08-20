@@ -10,7 +10,8 @@
 
 > Orden de proyectos
 1. primeros-pasos
-2. tareas-app-intro
+2. context-and-localStorage
+3. tareas-app-intro
 3. tareas-localStorage
 4. material-ui
 5. rick-and-morty-api

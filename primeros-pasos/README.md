@@ -1,6 +1,6 @@
 # Primeros pasos
 
-`npm create-react-app 'nombre-proyecto'`
+`npx create-react-app 'nombre-proyecto'`
 Utilización de create-react-app para crear un proyecto
 
 `npm start`
