@@ -1,6 +1,6 @@
 # App de x-men con API REST
 
-> Se utiliza un loading para el momento en que carga la API
+## Se utiliza un loading para el momento en que carga la API
 
 `npx create-react-app 'nombre-proyecto'`
 Utilización de create-react-app para crear un proyecto

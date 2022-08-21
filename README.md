@@ -18,7 +18,8 @@
     <li> tareas-app-intro </li>
     <li> tareas-localStorage </li>
     <li> material-ui </li>
-    <li> rick-and-morty-api </li>
+    <li> api-rick-and-morty </li>
+    <li> api-xmen </li>
     <li> menu-navegacion-01 </li>
     <li> menu-navegacion-02 </li>
 <ol>

@@ -1,4 +1,5 @@
 # Menu de navegacion
+
 ### Permite la navegación, incluso pasando parametros(id) en la dirección url para luego obtenerla en otro componente
 
 >Se utiliza para crear enlaces que permiten navegar en diferentes URL y cuando hacemos clic en cualquiera de esos enlaces en particular , debe cargar esa página que está asociada con esa ruta sin recargar la página.
@@ -19,7 +20,7 @@ Cuando el proyecto este terminado, para crear el codigo de producción (crea car
 No definido
 
 ### react-router-dom
-> Se utiliza la version de 'react-router-dom' v5, toco esvribirlo en el 'package.json' y ejecutar `npm install`
+> Se utiliza la version de 'react-router-dom' v5, toco escribirlo en el 'package.json' y ejecutar `npm install`
 
 > Obs: si se utiliza la version mas reciente de 'react-router-dom' hay que cambiar el código debido a las actualizaciones
 

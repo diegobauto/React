@@ -18,7 +18,7 @@ Cuando el proyecto este terminado, para crear el codigo de producción (crea car
 No definido
 
 ### react-router-dom
-> Se utiliza la version de 'react-router-dom' v5, toco esvribirlo en el 'package.json' y ejecutar `npm install`
+> Se utiliza la version de 'react-router-dom' v5, toco escribirlo en el 'package.json' y ejecutar `npm install`
 
 > Obs: si se utiliza la version mas reciente de 'react-router-dom' hay que cambiar el código debido a las actualizaciones
 
