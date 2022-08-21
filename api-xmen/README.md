@@ -17,7 +17,7 @@ Cuando el proyecto este terminado, para crear el codigo de producción (crea car
 `npm run eject` 
 No definido
 
-### react-router-dom
+## react-router-dom
 > Se utiliza la version de 'react-router-dom' v5, toco esvribirlo en el 'package.json' y ejecutar `npm install`
 
 > Obs: si se utiliza la version mas reciente de 'react-router-dom' hay que cambiar el código debido a las actualizaciones
@@ -25,6 +25,6 @@ No definido
 `npm install react-router-dom`
 Instala la version mas reciente
 
-### Bootstrap
+## Bootstrap
 `npm i bootstrap@5.2.0`
 Instalar bbootstrap
