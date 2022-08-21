@@ -15,4 +15,5 @@
 
 ## React Data Table Component - DataTable
 `npm i react-data-table-component` Instalación del modulo
+
 Más info: >https://react-data-table-component.netlify.app/?path=/story/getting-started-intro--page
