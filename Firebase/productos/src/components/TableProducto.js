@@ -9,7 +9,7 @@ import { RiDeleteBin5Fill } from 'react-icons/ri';
 import FormProducto from "./FormProducto";
 
 //Importamos la base de datos de firestore
-import {db} from "../firebase.js"
+import {db} from "./firebase.js"
 
 import { toast } from "react-toastify";
 

@@ -3,7 +3,7 @@ import { Button, Modal, Form } from 'react-bootstrap';
 import { IoMdAdd } from 'react-icons/io';
 
 //Importamos la base de datos de firestore
-import {db} from "../firebase.js"
+import {db} from "./firebase.js"
 
 import { toast } from "react-toastify";
 

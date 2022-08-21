@@ -1,7 +1,11 @@
+//Modulos necesarios para la implementación de firebase
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
+/* Para ver las credeciales accedemos a:
+Al lado de descripción general (en la tuerca),
+y en configuración del proyecto*/
 const firebaseConfig = {
     apiKey: "AIzaSyBrDx5qWOwedj_nImHIk1KmgVKGVzFE6bY",
     authDomain: "novanity-8d109.firebaseapp.com",
@@ -12,7 +16,7 @@ const firebaseConfig = {
     measurementId: "G-3YM58MV7PH"
 };
   
-// Initialize Firebase
+// Inicializa Firebase
 const app = firebase.initializeApp(firebaseConfig);
 
-export const db = app.firestore();
+export const db = app.firestore(); //Se esporta la base de datos

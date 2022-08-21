@@ -1,6 +1,6 @@
-# Titulo de la aplicación
+# App con Firebase, tabla de productos
 
-## Descripcion de la aplicación
+## Es una aplicación implementada con Firebas (base de datos), además utiliza una tabla y el uso de alertas(notificaciones) por medio de Toastify
 
 > Explicación de extra
 
@@ -9,3 +9,6 @@
 `npm test` Realizar pruebas
 `npm run build` Cuando el proyecto este terminado, para crear el codigo de producción (crea carpeta 'build')
 `npm run eject` No definido
+
+## react-toastify
+`npm install --save react-toastify` Instalacion del modulo
