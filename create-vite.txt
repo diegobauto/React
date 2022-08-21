@@ -1,6 +1,6 @@
 # Titulo de la aplicación 
 
-### Descripción del proyecto
+## Descripción del proyecto
 
 ## Proyecto creado con Vite
 `npm create vite`
@@ -10,7 +10,7 @@ Crear un proyecto con vite
 Instalar los modulos de node, carpeta 'node_modules'
 
 `npm run dev`
-Correr la aplicaión
+Correr la aplicación
 
 `npm run build`
 Cuando el proyecto este terminado, para crear el codigo de producción (crea carpeta 'dist')

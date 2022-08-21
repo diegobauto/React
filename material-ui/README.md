@@ -8,11 +8,11 @@ Crear un proyecto con vite
 Instalar los modulos de node, carpeta 'node_modules'
 
 `npm run dev`
-Correr la aplicaión
+Correr la aplicación
 
 `npm run build`
-Cuando el proyecto este terminado, para crear el codigo de producción (crea carpeta 'dist')
+Cuando el proyecto este terminado, para crear el código de producción (crea carpeta 'dist')
 
 ## Utilizacion de material ui
 `npm install @mui/material @emotion/react @emotion/styled`
-Instalar el modulo y posteriormente se implementa el componente a utilizar
+Instalar el módulo y posteriormente se implementa el componente a utilizar

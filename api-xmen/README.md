@@ -12,18 +12,18 @@ Correr la aplicación
 Realizar pruebas
 
 `npm run build`
-Cuando el proyecto este terminado, para crear el codigo de producción (crea carpeta 'build')
+Cuando el proyecto este terminado, para crear el código de producción (crea carpeta 'build')
 
 `npm run eject` 
 No definido
 
 ## react-router-dom
-> Se utiliza la version de 'react-router-dom' v5, toco esvribirlo en el 'package.json' y ejecutar `npm install`
+> Se utiliza la versión de 'react-router-dom' v5, toco escribirlo en el 'package.json' y ejecutar `npm install`
 
-> Obs: si se utiliza la version mas reciente de 'react-router-dom' hay que cambiar el código debido a las actualizaciones
+> Obs: si se utiliza la versión más reciente de 'react-router-dom' hay que cambiar el código debido a las actualizaciones
 
 `npm install react-router-dom`
-Instala la version mas reciente
+Instala la versión mas reciente
 
 ## Bootstrap
 `npm i bootstrap@5.2.0`
