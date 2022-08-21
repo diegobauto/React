@@ -13,4 +13,4 @@ Instalar los modulos de node, carpeta 'node_modules'
 Correr la aplicación
 
 `npm run build`
-Cuando el proyecto este terminado, para crear el codigo de producción (crea carpeta 'dist')
+Cuando el proyecto este terminado, para crear el código de producción (crea carpeta 'dist')
