@@ -1,4 +1,3 @@
-import './App.css';
 import Tabla from "./components/TableProducto";
 
 //Importo toastify para mensajes 
@@ -11,7 +10,8 @@ function App() {
       <div className="row">
         <Tabla/>
       </div>
-      <ToastContainer/>
+      {/* Añade toastify como un componente */}
+      <ToastContainer/> 
     </div>
   );
 }

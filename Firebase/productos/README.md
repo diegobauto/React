@@ -1,8 +1,8 @@
-# App con Firebase, tabla de productos
+# App con Firebase, DataTable y Toastify
 
-## Es una aplicación implementada con Firebas (base de datos), además utiliza una tabla y el uso de alertas(notificaciones) por medio de Toastify
+## Es una aplicación implementada con Firebase (base de datos),en donde administra una tabla de productos. Utiliza una tabla con DataTable y el uso de alertas u/o notificaciones por medio de Toastify
 
-> Explicación de extra
+> Obs: Si Firebase muestra error por falta de permisos, ir a 'FireStore DataBase->Relgas' y modificar la fecha
 
 `npx create-react-app 'nombre-proyecto'` Utilización de create-react-app para crear un proyecto
 `npm start` Correr la aplicación
@@ -12,3 +12,7 @@
 
 ## react-toastify
 `npm install --save react-toastify` Instalacion del modulo
+
+## React Data Table Component - DataTable
+`npm i react-data-table-component` Instalación del modulo
+Más info: >https://react-data-table-component.netlify.app/?path=/story/getting-started-intro--page
