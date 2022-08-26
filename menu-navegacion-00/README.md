@@ -5,10 +5,18 @@
 > Dentro de las rutas ya no es necesario colocar la palabra 'exact', esto solo se hace en versiones anteriores
 
 ## Proyecto creado con Vite
-`npm create vite` Crear un proyecto con vite
-`npm i` Instalar los modulos de node, carpeta 'node_modules'
-`npm run dev` Correr la aplicación
-`npm run build` Cuando el proyecto este terminado, para crear el código de producción (crea carpeta 'dist')
+`npm create vite` 
+Crear un proyecto con vite
+
+`npm i` 
+Instalar los modulos de node, carpeta 'node_modules'
+
+`npm run dev` 
+Correr la aplicación
+
+`npm run build` 
+Cuando el proyecto este terminado, para crear el código de producción (crea carpeta 'dist')
 
 ## React router
-`npm i react-router-dom` Importar react-router-dom
+`npm i react-router-dom` 
+Importar react-router-dom
