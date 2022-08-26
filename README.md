@@ -23,4 +23,8 @@
     <li> menu-navegacion-00 - Versión más reciente </li>
     <li> menu-navegacion-01 </li>
     <li> menu-navegacion-02 </li>
+    <li> Firebase -> productos </li>
+    <li> Firebase -> autenticacion00 </li>
 <ol>
+
+> Recordar ejecutar 'npm i' o 'npm install' en cada proyecto para descargar los modulos, carpeta 'node modules'
