@@ -19,7 +19,7 @@ function Acceso() {
 
   //Llamamos la funcion 'usarContexto' para llamar a todo el contexto de 'UserContext'
   //Utilizamos la funcion 'ingresar' declarada en el 'value' de 'UserContext'
-  const { ingresar } = usarContexto();
+  const { ingresar, ingresarConGoogle, cambiarClave } = usarContexto();
 
   //Obtiene el nombre de la etiqueta y el valor que se esta llenando en el campo (input)
   const handleChange = ({ target: { value, name } }) => {
@@ -28,15 +28,46 @@ function Acceso() {
     setUsuario({ ...usuario, [nombreCampo]: valorDigitado }); //Fuarda el valor sin borrar lo que ya tenia 'usuario'
   };
 
-  //Funcion al enviar el formulario de acceso
+  //Funcion al enviar el formulario de acceso e iniciar sesion
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(""); //Limpia el estado del error
     try {
       await ingresar(usuario.correo, usuario.clave); //Funcion utilizada del contexto
-      navigate("/perfil") //Redirecciona a '/perfil'
+      navigate("/perfil"); //Redirecciona a '/perfil'
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
+    }
+  };
+
+  //Funcion para iniciar sesion con Google
+  const handleGoogle = async () => {
+    try {
+      await ingresarConGoogle(); //Funcion utilizada a partir del contexto
+      navigate("/perfil"); //Redirreciona al perfil del usuario
+    } catch (error) {
+      setError(error.message); //Guarda el error en el estado
+    }
+  };
+
+  //Funcion para cambiar la clave de mi cuenta por si se le olvida al usuario
+  //Alerta: Si iniciamos sesion con Google, y luego cambiamos la contraseña, es como si ya no fuera de google
+  //Esto toca validarlo
+  const handleCambiarClave = async () => {
+    if (!usuario.correo)
+      //Comprueba que el campo del correo no este vacio
+      return setError(
+        "Escriba un correo electrónico para restablecer la contraseña."
+      );
+    try {
+      await cambiarClave(usuario.correo); //Funcion utilizada a partir del contexto
+      //Aunque no sea un error, aca se le muestra al usuario que
+      //se le envio un correo para reestablecer la contraseña
+      setError(
+        "Hemos enviado un mensaje a su correo para restablecer la contraseña."
+      );
+    } catch (error) {
+      setError(error.message); //Guarda el error en el estado
     }
   };
 
@@ -44,7 +75,7 @@ function Acceso() {
     <div className="contenedor">
       <div>
         {/* Si hay un error lo muestra */}
-        {error && <Alerta mensajeError={error}/>}
+        {error && <Alerta mensajeError={error} />}
         {/* Formulario para poder iniciar sesion */}
         <form onSubmit={handleSubmit}>
           <div className="campos">
@@ -73,7 +104,7 @@ function Acceso() {
 
           <div className="acceso">
             <button>Acceder</button>
-            <a href="">Olvide mi contraseña</a>
+            <a onClick={handleCambiarClave}>Olvide mi contraseña</a>
           </div>
         </form>
 
@@ -84,7 +115,7 @@ function Acceso() {
         </div>
 
         <div className="google">
-          <button>Iniciar sesion con Google</button>
+          <button onClick={handleGoogle}>Iniciar sesion con Google</button>
         </div>
       </div>
     </div>

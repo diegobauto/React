@@ -6,7 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter> {/* Componente para poder utilizar router en la aplicación */}
+    {/* Componente para poder utilizar router en la aplicación */}
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>

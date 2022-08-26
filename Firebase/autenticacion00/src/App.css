@@ -45,7 +45,8 @@ form label {
   font-size: 1em;
 }
 
-form button, .perfil button {
+form button,
+.perfil button {
   padding: 10px 15px;
   border-radius: 5px;
   background-color: #1976d2;
@@ -53,7 +54,8 @@ form button, .perfil button {
   color: white;
 }
 
-form button:hover, .perfil button:hover {
+form button:hover,
+.perfil button:hover {
   background-color: #1565c0;
   cursor: pointer;
 }
@@ -72,6 +74,7 @@ form button:hover, .perfil button:hover {
 .acceso a:hover {
   color: #0d47a1;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .accesso-registrar {
@@ -112,11 +115,11 @@ form button:hover, .perfil button:hover {
 .alerta {
   padding: 10px 15px;
   margin-bottom: 15px;
-  background-color: #F2D7D5;
-  border: 1px solid #7B241C;
-  color: #7B241C;
+  background-color: #f2d7d5;
+  border: 1px solid #7b241c;
+  color: #7b241c;
   border-radius: 5px;
-  font-size: 15px;;
+  font-size: 15px;
 }
 
 .perfil {
@@ -130,6 +133,10 @@ form button:hover, .perfil button:hover {
   padding: 25px 10px;
 }
 
-.perfil button{
+.perfil button {
   float: right;
+}
+
+.cargando {
+  text-align: center;
 }

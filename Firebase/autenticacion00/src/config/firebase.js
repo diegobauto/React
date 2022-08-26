@@ -4,12 +4,12 @@ import { getAuth } from "firebase/auth"; //Permite poder autenticarse por medio 
 // Las credenciales estan al lado de Descripcion general ...
 // En la tuerca(configuración)->configuración del proyecto
 const firebaseConfig = {
-  apiKey: "AIzaSyAQfi2IPV10fwVENJ6xoXCWQpXuTFoLR78",
-  authDomain: "autenticacion-b5824.firebaseapp.com",
-  projectId: "autenticacion-b5824",
-  storageBucket: "autenticacion-b5824.appspot.com",
-  messagingSenderId: "422303982224",
-  appId: "1:422303982224:web:337f657b0e94051536ae15",
+  apiKey: "AIzaSyBYJSvRO5a__-Cpo9wIi4Ve7i8bkX4H_bk",
+  authDomain: "autenticacion-bc396.firebaseapp.com",
+  projectId: "autenticacion-bc396",
+  storageBucket: "autenticacion-bc396.appspot.com",
+  messagingSenderId: "282643059533",
+  appId: "1:282643059533:web:afcd5348d972fea74edd04",
 };
 
 // Inicializar Firebase
