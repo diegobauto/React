@@ -1,7 +1,8 @@
 <h1 align="center">Proyectos React</h1>
 
-> Proyectos React
+> Recordar ejecutar 'npm i' o 'npm install' en cada proyecto para descargar los modulos, carpeta 'node modules'
 
+## Submodulos
 1. Creacion del submodulo `git submodule init`
 2. Agregar el submodulo `git submodule add <nombre-repositorio>`
 3. Adicionar los cambios `git add .`
@@ -9,8 +10,7 @@
 5. Subir los cambios `git push origin main`
 6. Clonar el repositorio `git clone $nombre del repositorio`
 
-> Orden de proyectos
-
+## Orden de proyectos
 <ol>
     <li> primeros-pasos </li>
     <li> usestate-useeffect </li>
@@ -26,5 +26,3 @@
     <li> Firebase -> productos </li>
     <li> Firebase -> autenticacion00 </li>
 <ol>
-
-> Recordar ejecutar 'npm i' o 'npm install' en cada proyecto para descargar los modulos, carpeta 'node modules'
