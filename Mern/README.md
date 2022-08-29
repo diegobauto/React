@@ -10,7 +10,7 @@
 > No olvidar ejecutar 'npm i' en la raiz 'mern' y en la capeta 'client'
 
 ## Proyecto creado con Vite
-`npm create vite` 
+`npm create vite`
 Crear un proyecto con vite
 
 `npm i` 
@@ -65,4 +65,4 @@ Nos permite comunicar entre dos aplicaciones de backend, en este caso la solicit
 Para el uso de la base de datos se utilizo XAMPP (mysql), se creo la base de datos 'tareas' y una tabla 'tareas'
 
 ## Ejecución
-> Ya que el codigo del frontend ya se paso a producción para ejecturalo en la carpeta raiz 'mern' utilizamos el comando 'npm start', comando puesto en el archivo 'package.json' en los 'scripts'. O en su defecto ejecutar `node server/index.js`
+> Ya que el codigo del frontend ya se paso a producción para ejecturalo en la carpeta raiz 'mern' utilizamos el comando `npm start`, comando puesto en el archivo 'package.json' en los 'scripts'. O en su defecto ejecutar `node server/index.js`
