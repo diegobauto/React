@@ -39,7 +39,7 @@ Permite ejecutar el servidor de nuestra aplicación sin necesidar de estar ejecu
 Módulo de conexion de mysql, tambien soporta promesas
 
 `npm install morgan`
-Poder ver por consola los mensajes que van llegando al backend
+Poder ver por consola las peticiones que realiza el cliente al servidor
 
 ## Dependecias frontend
 

@@ -40,7 +40,7 @@ export const crearTarea = async (req, res) => {
       descripcion,
     });
   } catch (error) {
-    return res.status(500).json({ mensaje: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
 
