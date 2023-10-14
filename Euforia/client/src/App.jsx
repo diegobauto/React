@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Sign from "../pages/Sign";
 import NotFound from "../pages/NotFound";
+import Dashboard from "../pages/Dashboard";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Sign />} />
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<h1>dashboard ja</h1>} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

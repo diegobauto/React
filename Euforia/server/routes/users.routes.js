@@ -1,11 +1,12 @@
 import { Router } from "express";
-import { crearUsuario, iniciarSesion, refreshToken, cerrarSesion } from "../controllers/users.js";
+import { signup, signin, dashboard, signout } from "../controllers/users.js";
+import { authorization } from "./authorization.js";
 
 const router = Router();
 
-router.post("/api/users/signup", crearUsuario);
-router.post("/api/users/signin/", iniciarSesion);
-router.get("/api/users/refresh-token/", refreshToken);
-router.get("/api/users/signout/", cerrarSesion);
+router.post("/api/users/signup", signup);
+router.post("/api/users/signin/", signin);
+router.get("/api/users/dashboard/", authorization, dashboard);
+router.get("/api/users/signout/", authorization, signout);
 
 export default router;

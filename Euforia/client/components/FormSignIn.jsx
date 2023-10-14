@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { signinRequest } from "../api/usuarios.api";
+import { useContextUser } from "../context/UserContext";
 
 function FormSignIn() {
   //Estado para el usuario que va iniciar sesion
@@ -6,18 +8,22 @@ function FormSignIn() {
     correo: "",
     contrasena: "",
   });
+
+  const { saveUser } = useContextUser();
+
   const handleChangeUserToSignin = ({ target: { name, value } }) => {
     //Obtengo la etiqueta con el nombre y el valor
     //Para poder cambiar el estado con lo que ya tenia (...userToCreate)
     //y lo que quiero añadir al campo [name] : con su valor 'value'
     setUserToSignin({ ...userToSignin, [name]: value });
   };
-  const handleSubmitSignIn = (e) => {
+
+  const handleSubmitSignIn = async (e) => {
     e.preventDefault();
-    console.log(userToSignin);
-    // createUserRequest({ nombre, correo, contrasena });
+    const response = await signinRequest(userToSignin);
+    saveUser(response.data);
   };
-  
+
   return (
     <div className="form-container sign-in-container">
       <form onSubmit={handleSubmitSignIn}>

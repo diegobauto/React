@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { createUserRequest } from "../api/usuarios.api";
+import { signupRequest } from "../api/usuarios.api";
 
-function FormSignUp() {
+function FormSignUp({ values }) {
+  const { changeStyleContainer } = values;
+
   const stateInitial = {
     nombre: "",
     correo: "",
@@ -21,8 +23,9 @@ function FormSignUp() {
 
   const handleSubmitSignUp = async (e) => {
     e.preventDefault();
-    await createUserRequest(userToCreate);
-    setUserToCreate(stateInitial);
+    await signupRequest(userToCreate); //Mandar la peticion al servidor para crear usuario
+    setUserToCreate(stateInitial); //Limpiar los campos del formulario
+    changeStyleContainer("container"); //Mostrar la parte de iniciar sesión (ya que creo un usuario)
   };
 
   return (

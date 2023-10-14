@@ -1,61 +1,99 @@
 import { pool } from "../database/db.js";
 import bcrypt from "bcrypt";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+  getUserEncrypt,
+} from "../tokens/tokens.js";
 
-export const crearUsuario = async (req, res) => {
+/* *************************************** SIGN UP ********************************************/
+export const signup = async (req, res) => {
   try {
     const { nombre, correo, contrasena } = req.body;
 
     //Validación de los campos necesarios para la creación del usuario
     if (!nombre || !correo || !contrasena) {
-      return res.status(400).json({ error: "Valores no definidos" });
+      return res
+        .status(400)
+        .json({ error: "Los valores del formulario son requeridos" });
     }
 
-    const hash = await bcrypt.hash(contrasena, 10); //Encriptar la contraseña
-    const [result] = await pool.query(
-      "INSERT INTO `usuario` (`nombre`, `correo`, `contrasena`) VALUES (?, ?, ?);",
-      [nombre, correo, hash]
+    const [result_get] = await pool.query(
+      "SELECT * FROM usuario WHERE correo = ?",
+      [correo]
     );
+    if (result_get.length === 0) {
+      const hash = await bcrypt.hash(contrasena, 10); //Encriptar la contraseña
+      const [result] = await pool.query(
+        "INSERT INTO `usuario` (`nombre`, `correo`, `contrasena`) VALUES (?, ?, ?);",
+        [nombre, correo, hash]
+      );
 
-    //Si se afecto una(1) fila en la base de datos es porque si se creo el registro
-    return result.affectedRows === 1
-      ? res.status(200).json({ mensaje: "Usuario creado" }) //Si se creo, mostramos estado -> Solicitud aceptada
-      : res.status(400).json({ mensaje: "Usuario no creado" }); //Sino, mostramos estado -> Solicitud incorrecta
+      if (result.affectedRows > 0) {
+        //Si se creo, mostramos estado -> Solicitud completada
+        res.status(201).json({ message: "Usuario registrado exitosamente" });
+      } else {
+        //Sino, mostramos estado -> Error del servidor
+        res.status(500).json({ error: "Error al registrar el usuario" });
+      }
+    } else {
+      return res.status(409).json({ error: "Usuario ya existente" });
+    }
   } catch (error) {
-    return res.status(500).json({ mensaje: error.message }); //Error interno del servidor
+    return res.status(500).json({ error: error.message });
   }
 };
 
-export const iniciarSesion = async (req, res) => {
+/* *************************************** SIGN IN ********************************************/
+export const signin = async (req, res) => {
   try {
     const { correo, contrasena } = req.body;
 
-    //Validación de los campos necesarios para la creación del usuario
+    // Validación de los campos necesarios para la creación del usuario
     if (!correo || !contrasena) {
-      return res.status(400).json({ error: "Valores no definidos" });
+      return res
+        .status(400)
+        .json({ error: "Los valores del formulario son requeridos" });
     }
 
+    //Obtener el usuario con el correo recibido
     const [result] = await pool.query(
-      "SELECT * FROM `usuario` WHERE `correo` = ?",
+      "SELECT * FROM usuario WHERE correo = ?",
       [correo]
     );
-    const hash = result[0].contrasena; //Se obtiene la contraseña encriptada del usuario
-    const coinciden = await bcrypt.compare(contrasena, hash); //Se comparan las contraseñas
 
-    if (!coinciden) {
-      //Si las contraseñas no coinciden, mostramos estado -> Solicitud incorrecta
-      return res.status(400).json({ error: "Contraseña incorrecta" });
+    //Si la respuesta es que si hay un usuario
+    if (result.length > 0) {
+      const user = result[0];
+      /*Se comprueba que las contraseñas coincidan 
+      La que se envia por body (contrasena), que vendria siendo lo que llega del formulario del front
+      como el hash que se obtiene de la base de datos del usuario obtenido en la consulta anterior */
+      if (await bcrypt.compare(contrasena, user.contrasena)) {
+        const accessToken = generateAccessToken(user);
+        const refreshToken = generateRefreshToken(user);
+        await pool.query("INSERT INTO `tokens` (`token`) VALUES (?);", [
+          refreshToken,
+        ]);
+        res
+          .status(200)
+          .json({ user: getUserEncrypt(user), accessToken, refreshToken });
+      } else {
+        res.status(401).json({ error: "Credenciales inválidas" });
+      }
+    } else {
+      res.status(401).json({ error: "Usuario no encontrado" });
     }
-
-    res.send(true);
   } catch (error) {
-    return res.status(500).json({ mensaje: error.message }); //Error interno del servidor
+    return res.status(500).json({ error: error.message }); // Error interno del servidor
   }
 };
 
-export const refreshToken = (req, res) => {
-  res.send("refreshToken");
+/* ************************************* SIGN OUT **********************************************/
+export const signout = (req, res) => {
+  return res.status(200).json({ mensaje: "Cerró sesión exitosamente" });
 };
 
-export const cerrarSesion = (req, res) => {
-  res.send("cerrarSesion");
+/* *******************************************************************************************/
+export const dashboard = (req, res) => {
+  return res.json({ user: req.user });
 };
