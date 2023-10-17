@@ -3,6 +3,8 @@ import { signinRequest } from "../api/usuarios.api";
 import { useContextUser } from "../context/UserContext";
 
 function FormSignIn() {
+  const [errors, setErrors] = useState("");
+
   //Estado para el usuario que va iniciar sesion
   const [userToSignin, setUserToSignin] = useState({
     correo: "",
@@ -16,12 +18,17 @@ function FormSignIn() {
     //Para poder cambiar el estado con lo que ya tenia (...userToCreate)
     //y lo que quiero añadir al campo [name] : con su valor 'value'
     setUserToSignin({ ...userToSignin, [name]: value });
+    setErrors("");
   };
 
   const handleSubmitSignIn = async (e) => {
     e.preventDefault();
-    const response = await signinRequest(userToSignin);
-    saveUser(response.data);
+    try {
+      const response = await signinRequest(userToSignin);
+      saveUser(response.data);
+    } catch (error) {
+      setErrors(error.response.data.error);
+    }
   };
 
   return (
@@ -43,7 +50,8 @@ function FormSignIn() {
           value={userToSignin.contrasena}
           onChange={handleChangeUserToSignin}
         />
-        <a href="#">¿Olvidaste tu contraseña?</a>
+        {errors && <span className="error">{errors}</span>}
+        {/* <a href="#">¿Olvidaste tu contraseña?</a> */}
         <button>Iniciar sesión</button>
       </form>
     </div>

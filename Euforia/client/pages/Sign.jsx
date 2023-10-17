@@ -21,10 +21,12 @@ function Sign() {
   }
   //Si un usuario NO esta autenticado me muestra los formularios
   return (
-    <div className={container} id="container">
-      <FormSignUp values={{ changeStyleContainer }}/>
-      <FormSignIn/>
-      <InfoSign values={{ changeStyleContainer }} />
+    <div className="box-flex-form">
+      <div className={container} id="container">
+        <FormSignUp values={{ changeStyleContainer }} />
+        <FormSignIn />
+        <InfoSign values={{ changeStyleContainer }} />
+      </div>
     </div>
   );
 }

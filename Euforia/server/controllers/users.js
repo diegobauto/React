@@ -81,7 +81,7 @@ export const signin = async (req, res) => {
         res.status(401).json({ error: "Credenciales inválidas" });
       }
     } else {
-      res.status(401).json({ error: "Usuario no encontrado" });
+      res.status(401).json({ error: "Credenciales inválidas" });
     }
   } catch (error) {
     return res.status(500).json({ error: error.message }); // Error interno del servidor
@@ -89,11 +89,35 @@ export const signin = async (req, res) => {
 };
 
 /* ************************************* SIGN OUT **********************************************/
-export const signout = (req, res) => {
-  return res.status(200).json({ mensaje: "Cerró sesión exitosamente" });
+export const signout = async (req, res) => {
+  try {
+    const refreshToken = req.headers.authorization;
+
+    const [result] = await pool.query(
+      "DELETE FROM tokens WHERE `tokens`.`token` = ?",
+      [refreshToken]
+    );
+    return res.status(200).json({ mensaje: "Cerró sesión exitosamente" });
+  } catch (error) {
+    return res.status(500).json({ error: error.message }); // Error interno del servidor
+  }
 };
 
 /* *******************************************************************************************/
 export const dashboard = (req, res) => {
   return res.json({ user: req.user });
+};
+
+/* *******************************************************************************************/
+export const getAllUsers = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT `correo`,`nombre` FROM `usuario` WHERE `id_usuario` != ? AND `rol` = 'usuario'",
+      [req.user.id_usuario]
+    );
+    console.log(result);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ error: error.message }); // Error interno del servidor
+  }
 };

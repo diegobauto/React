@@ -1,12 +1,13 @@
 import { Router } from "express";
-import { signup, signin, dashboard, signout } from "../controllers/users.js";
-import { authorization } from "./authorization.js";
+import { signup, signin, dashboard, signout, getAllUsers } from "../controllers/users.js";
+import { authorization, isAdmin } from "../middlewares/authorization.js";
 
 const router = Router();
 
-router.post("/api/users/signup", signup);
-router.post("/api/users/signin/", signin);
-router.get("/api/users/dashboard/", authorization, dashboard);
-router.get("/api/users/signout/", authorization, signout);
+router.post("/signup", signup);
+router.post("/signin", signin);
+router.delete("/signout", signout);
+router.get("/dashboard/", authorization, dashboard);
+router.get("/users", [authorization, isAdmin], getAllUsers)
 
 export default router;

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { signupRequest } from "../api/usuarios.api";
 
 function FormSignUp({ values }) {
+  const [errors, setErrors] = useState("");
+
   const { changeStyleContainer } = values;
 
   const stateInitial = {
@@ -19,13 +21,20 @@ function FormSignUp({ values }) {
     //Para poder cambiar el estado con lo que ya tenia (...userToCreate)
     //y lo que quiero añadir al campo [name] : con su valor 'value'
     setUserToCreate({ ...userToCreate, [name]: value });
+    setErrors("");
   };
 
   const handleSubmitSignUp = async (e) => {
     e.preventDefault();
-    await signupRequest(userToCreate); //Mandar la peticion al servidor para crear usuario
-    setUserToCreate(stateInitial); //Limpiar los campos del formulario
-    changeStyleContainer("container"); //Mostrar la parte de iniciar sesión (ya que creo un usuario)
+
+    try {
+      await signupRequest(userToCreate); //Mandar la peticion al servidor para crear usuario
+      setUserToCreate(stateInitial); //Limpiar los campos del formulario
+      changeStyleContainer("container"); //Mostrar la parte de iniciar sesión (ya que creo un usuario)
+      setErrors("");
+    } catch (error) {
+      setErrors(error.response.data.error);
+    }
   };
 
   return (
@@ -54,6 +63,7 @@ function FormSignUp({ values }) {
           value={userToCreate.contrasena}
           onChange={handleChangeUserToCreate}
         />
+        {errors && <span className="error">{errors}</span>}
         <button>Crear Cuenta</button>
       </form>
     </div>

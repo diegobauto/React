@@ -14,6 +14,8 @@
 	background: #f2f2f2; 
 }
 
+/********************/
+
 .first-color { 
 	background: #233142; 
 }

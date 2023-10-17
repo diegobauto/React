@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { createNewAccessToken, getUserInfo } from "../controllers/tokens.js";
-import { authorization } from "./authorization.js";
+import { authorization } from "../middlewares/authorization.js";
 
 const router = Router();
 
-router.post("/api/tokens/", createNewAccessToken);
-router.get("/api/tokens/user/", authorization, getUserInfo);
+router.post("/", createNewAccessToken);
+router.get("/user", authorization, getUserInfo);
 
 export default router;

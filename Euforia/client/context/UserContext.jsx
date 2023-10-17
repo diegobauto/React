@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getNewAccessTokenRequest, getUserInfo } from "../api/usuarios.api";
+import { getNewAccessTokenRequest, getUserInfoRequest } from "../api/usuarios.api";
+import Loader from "../components/Loader";
 
 const ContextUser = createContext(); //Se crea el contexto
 
@@ -17,6 +18,7 @@ function UserContext({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     checkAuth();
@@ -25,14 +27,17 @@ function UserContext({ children }) {
   const checkAuth = async () => {
     if (accessToken) {
       //El usuario ya esta autenticado
-      console.log("ss");
+      const userInfo = await getUserInfoRequest(accessToken);
+      saveUser({
+        user: userInfo,
+        accessToken: accessToken,
+        refreshToken: getAccessToken(),
+      });
     } else {
       const token = getRefreshToken();
       if (token) {
         const response = await getNewAccessTokenRequest(token);
-        console.log(response.accessToken);
-        const userInfo = await getUserInfo(response.accessToken);
-        console.log(userInfo);
+        const userInfo = await getUserInfoRequest(response.accessToken);
         saveUser({
           user: userInfo,
           accessToken: response.accessToken,
@@ -40,6 +45,7 @@ function UserContext({ children }) {
         });
       }
     }
+    setIsLoading(false);
   };
 
   const getAccessToken = () => accessToken;
@@ -56,11 +62,25 @@ function UserContext({ children }) {
     setIsAuthenticated(true);
   };
 
+  const signout = () => {
+    setIsAuthenticated(false);
+    setAccessToken("");
+    setUser(undefined);
+    localStorage.removeItem("token");
+  };
+
   return (
     <ContextUser.Provider
-      value={{ isAuthenticated, getAccessToken, getRefreshToken, saveUser, getUser }}
+      value={{
+        isAuthenticated,
+        getAccessToken,
+        getRefreshToken,
+        saveUser,
+        getUser,
+        signout
+      }}
     >
-      {children}
+      {isLoading ? <Loader/> : children}
     </ContextUser.Provider>
   );
 }
