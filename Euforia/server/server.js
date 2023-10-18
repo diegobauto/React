@@ -13,3 +13,5 @@ app.use("/api/tokens/", TokensRoutes);
 
 app.listen("3000");
 console.log("Servidor Iniciado / Puerto 3000");
+
+export default app;

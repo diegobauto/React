@@ -6,6 +6,12 @@ import {
   getUserEncrypt,
 } from "../tokens/tokens.js";
 
+
+export const prueba = (req, res) => {
+  return res.status(200).json("hola");
+}
+
+
 /* *************************************** SIGN UP ********************************************/
 export const signup = async (req, res) => {
   try {
@@ -115,7 +121,6 @@ export const getAllUsers = async (req, res) => {
       "SELECT `correo`,`nombre` FROM `usuario` WHERE `id_usuario` != ? AND `rol` = 'usuario'",
       [req.user.id_usuario]
     );
-    console.log(result);
     return res.status(200).json(result);
   } catch (error) {
     return res.status(500).json({ error: error.message }); // Error interno del servidor
