@@ -16,12 +16,12 @@ export const createNewAccessToken = async (req, res) => {
           const accessToken = generateAccessToken(payload);
           return res.status(200).json({ accessToken });
         }
-        return res.status(401).json({ error: "No autorizado 1" });
+        return res.status(401).json({ error: "No autorizado" });
       } else {
-        return res.status(401).json({ error: "No autorizado 2" });
+        return res.status(401).json({ error: "No autorizado" });
       }
     } else {
-      return res.status(401).json({ error: "No autorizado 3" });
+      return res.status(401).json({ error: "No autorizado" });
     }
   } catch (error) {
     return res.status(500).json({ error: error.message });

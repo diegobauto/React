@@ -28,7 +28,7 @@ export const signoutRequest = async (refreshToken) => {
 //Petición para crear un nuevo token a partir del refreshToken
 export const getNewAccessTokenRequest = async (refreshToken) => {
   const response = await axios.post(
-    `${API_TOKENS}/user/`,
+    `${API_TOKENS}`,
     {},
     {
       headers: {
@@ -42,6 +42,27 @@ export const getNewAccessTokenRequest = async (refreshToken) => {
 //Petición para obtener el usuario a partir de un accessToken
 export const getUserInfoRequest = async (accessToken) => {
   const response = await axios.get(`${API_TOKENS}/user/`, {
+    headers: {
+      authorization: accessToken,
+    },
+  });
+  return response.data;
+};
+
+//Petición para obtener todos usuario del servidor
+export const getAllUsersRequest = async (accessToken) => {
+  const response = await axios.get(`${API_USER}/users/`, {
+    headers: {
+      authorization: accessToken,
+    },
+  });
+  return response.data;
+};
+
+
+//Petición para obtener el usuario a partir de un accessToken
+export const updateUserRequest = async (accessToken, dataToUpdate) => {
+  const response = await axios.put(`${API_USER}/users/update`, dataToUpdate, {
     headers: {
       authorization: accessToken,
     },

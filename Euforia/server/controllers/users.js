@@ -6,11 +6,9 @@ import {
   getUserEncrypt,
 } from "../tokens/tokens.js";
 
-
 export const prueba = (req, res) => {
   return res.status(200).json("hola");
-}
-
+};
 
 /* *************************************** SIGN UP ********************************************/
 export const signup = async (req, res) => {
@@ -118,8 +116,22 @@ export const dashboard = (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT `correo`,`nombre` FROM `usuario` WHERE `id_usuario` != ? AND `rol` = 'usuario'",
+      "SELECT `correo`,`nombre`,`rol` FROM `usuario` WHERE `id_usuario` != ? AND `id_usuario` != 83",
       [req.user.id_usuario]
+    );
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ error: error.message }); // Error interno del servidor
+  }
+};
+
+/* *******************************************************************************************/
+export const updateUsers = async (req, res) => {
+  try {
+    const { rol, correo } = req.body;
+    const [result] = await pool.query(
+      "UPDATE `usuario` SET `rol` = ? WHERE `correo` = ?",
+      [rol, correo]
     );
     return res.status(200).json(result);
   } catch (error) {

@@ -7,18 +7,21 @@ import FormSignIn from "../components/FormSignIn";
 import InfoSign from "../components/InfoSign";
 
 function Sign() {
+  //Uso del contexto de la app
+  const { isAuthenticated } = useContextUser();
+
+  //Estado para la animación del contenedor del formulario (de lado a lado)
   const [container, setContainer] = useState("container");
+
+  //Función para cambiar la animación del contenedor del formulario (de lado a lado)
   const changeStyleContainer = () => {
     container === "container"
       ? setContainer("container right-panel-active")
       : setContainer("container");
   };
 
-  //Si un usuario YA esta autenticado me redirige al dashboard
-  const { isAuthenticated } = useContextUser();
-  if (isAuthenticated) {
-    return <Navigate to="/dashboard" />;
-  }
+  //Si un usuario YA esta autenticado me redirige a panel de reservas
+  if (isAuthenticated) return <Navigate to="/reservas" />;
   //Si un usuario NO esta autenticado me muestra los formularios
   return (
     <div className="box-flex-form">

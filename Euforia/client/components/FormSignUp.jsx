@@ -2,10 +2,13 @@ import { useState } from "react";
 import { signupRequest } from "../api/usuarios.api";
 
 function FormSignUp({ values }) {
+  //Estado para manejar los errores que me envia el backend
   const [errors, setErrors] = useState("");
 
-  const { changeStyleContainer } = values;
+  //Props para el manejo del contenedor o del formulario (animación que se mueve de un lado a otro)
+  const { changeStyleContainer } = values; 
 
+  //Estado incial del usuario
   const stateInitial = {
     nombre: "",
     correo: "",
@@ -26,14 +29,13 @@ function FormSignUp({ values }) {
 
   const handleSubmitSignUp = async (e) => {
     e.preventDefault();
-
     try {
       await signupRequest(userToCreate); //Mandar la peticion al servidor para crear usuario
-      setUserToCreate(stateInitial); //Limpiar los campos del formulario
+      setUserToCreate(stateInitial); //Limpian los campos del formulario
       changeStyleContainer("container"); //Mostrar la parte de iniciar sesión (ya que creo un usuario)
-      setErrors("");
+      setErrors(""); //Asigamos el estado de error a vacío
     } catch (error) {
-      setErrors(error.response.data.error);
+      setErrors(error.response.data.error); //Asignamos el error del backend al estado
     }
   };
 

@@ -18,6 +18,7 @@ export function getUserEncrypt(user) {
     id_usuario: user.id_usuario,
     nombre: user.nombre,
     correo: user.correo,
+    rol: user.rol
   };
 }
 

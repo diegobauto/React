@@ -1,6 +1,7 @@
 import "./notfound.css";
 import { Link } from "react-router-dom";
 
+//Componente para página no encontrada
 function NotFound() {
   return (
     <div className="notfound">

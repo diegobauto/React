@@ -15,58 +15,73 @@ export const useContextUser = () => {
 };
 
 function UserContext({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [accessToken, setAccessToken] = useState("");
-  const [user, setUser] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  //Estado para saber si un usuario esta autenticado
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [accessToken, setAccessToken] = useState(""); //AccessToken del usuario autenticado
+  const [user, setUser] = useState({}); //Información del usuario autenticado
+  const [isLoading, setIsLoading] = useState(true); //Saber si hay una carga al obtener el hijo del contexto
 
   useEffect(() => {
     checkAuth();
   }, []);
 
+  //Esta función permite asignar los valores del estado
   const checkAuth = async () => {
     if (accessToken) {
-      //El usuario ya esta autenticado
-      const userInfo = await getUserInfoRequest(accessToken);
-      saveUser({
-        user: userInfo,
-        accessToken: accessToken,
-        refreshToken: getAccessToken(),
-      });
+      console.log("ENTRA EN EL PRIMER IF (prueba ya que nunca entra)");
+      console.log("NO LO HE ELIMINADO POR SI ACASO");
+      //Si el usuario ya esta autenticado
+      //Hace una petición al servidor para obtener los datos del usuario que esta autenticado
+      // const userInfo = await getUserInfoRequest(accessToken); 
+      // //Guarda el usuario con sus tokens
+      // saveUser({
+      //   user: userInfo,
+      //   accessToken: accessToken,
+      //   refreshToken: getAccessToken(),
+      // });
     } else {
-      const token = getRefreshToken();
-      if (token) {
-        const response = await getNewAccessTokenRequest(token);
+      //Si el usuario se autentico pero caduco el token
+      //Lo que se va a hacer es refrescar el token
+      //Obtenemos el que ya esta en el localstorage (que fue el que caduco)
+      const r_token = getRefreshToken(); 
+      if (r_token) {
+        //Generamos un nuevo token a partir de la peticion al servidor con el refreshToken caducado
+        const response = await getNewAccessTokenRequest(r_token);
+        //Hace una petición al servidor con el nuevo accessToken para obtener 
+        //los datos del usuario que ya estaba autenticado
         const userInfo = await getUserInfoRequest(response.accessToken);
+        //Guarda el usuario con sus tokens
         saveUser({
           user: userInfo,
           accessToken: response.accessToken,
-          refreshToken: token,
+          refreshToken: r_token,
         });
       }
     }
-    setIsLoading(false);
+    setIsLoading(false); //Asignamos el estado de carga a falso
   };
 
-  const getAccessToken = () => accessToken;
+  //Getters
+  const getAccessToken = () => accessToken; 
   const getRefreshToken = () => localStorage.getItem("token") || null;
   const getUser = () => user;
 
-  //Guarda la información de nuestros access token
-  //Guardar la información de el usuario
-  //Marcar que ya estamos autenticados
+  //Guardar la información del usuario y para marcar la autenticación
   const saveUser = (responseToBack) => {
-    setAccessToken(responseToBack.accessToken);
-    setUser(responseToBack.user);
-    localStorage.setItem("token", responseToBack.refreshToken);
-    setIsAuthenticated(true);
+    setAccessToken(responseToBack.accessToken); //Guarda la información del accessToken
+    //Lo que esta adentro del setUser es para no guardar las propiedades el iat y exp generados por jwt
+    setUser((({ iat, exp, ...rest }) => rest)(responseToBack.user)); //Guardar la información de el usuario
+    //Indicar un item en el localStorage, esto para indicar que estamos autenticados de forma general
+    localStorage.setItem("token", responseToBack.refreshToken); 
+    setIsAuthenticated(true);  //Marcar que ya estamos autenticados
   };
 
+  //Cerrar sesión
   const signout = () => {
-    setIsAuthenticated(false);
-    setAccessToken("");
-    setUser(undefined);
-    localStorage.removeItem("token");
+    setIsAuthenticated(false); //Marcar que ya no estamos autenticados
+    setAccessToken("");  //Eliminamos el accessToken porque ya no hay usuario autenticad
+    setUser(undefined); //Ya no deberia haber un usuario, por lo tanto se marca como undefined
+    localStorage.removeItem("token"); //Elimina el item que estaba en el localStorage
   };
 
   return (
