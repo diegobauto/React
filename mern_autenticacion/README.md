@@ -67,9 +67,9 @@ Para acceder a la aplicación a través del navegador es necesario visitar la di
 - Directorio server/ (API):
     - controllers/: Funciones controladoras para manejar las solicitudes HTTP.
     - database/: Archivos relacionados con la configuración y la interacción con la base de datos.
-    - libs/: Funciones generales para la gestión de la aplicación.
-    - middlewares: Funciones intermedias que se ejecutan antes o después de las rutas principales de la aplicación.
-    - models: Modelos de la base de datos.
+    - libs/: Funciones generales para la gestión de la aplicación que se pueden utilizar varias veces.
+    - middlewares/: Funciones intermedias que se ejecutan antes o después de las rutas principales de la aplicación.
+    - models/: Modelos de datos de nuestra base de datos.
     - routes/: Archivo con la definición de las diferentes rutas de la api.
 - Directorio client/src:
     - api/: Majeno de solicitudes con axios hacia la api.
