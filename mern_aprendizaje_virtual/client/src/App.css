@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+}
+
+body{
+  background-color: #eee;
+}
+
+/* Menu de navegación */
+.menu {
+  background-color: #242424;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  color: white;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #d1d1d1;
+}
+
+.menu a:hover {
+  color: white;
+}
+
+/* Not found */
+.contenedor {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #242424;
+}
+
+.contenedor h1 {
+  font-size: 10rem;
+}
+
+.contenedor p {
+  font-size: 2.5rem;
+  margin: 15px;
+}
+
+.contenedor a {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: rgb(45, 106, 219);
+  text-decoration: none;
+}
+
+.contenedor a:hover {
+  color: rgb(36, 69, 129);
+}
+
+/* Formulario creación y actualización */
+form {
+  width: 300px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 15px;
+  border-radius: 7px;
+  background-color: #212121;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  padding: 10px;
+  margin: 5px;
+}
+
+form button {
+  border: none;
+  background-color: #313131;
+  color: white;
+}
+
+form button:hover {
+  cursor: pointer;
+  background-color: #414141;
+  color: white;
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Contenedor de todos los tutoriales */
+.contenedor-tutoriales {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tutorial-tarjeta {
+  border-radius: 7px;
+  padding: 15px;
+  background-color: #212121;
+  color: white;
+  margin: 10px;
+}
+
+.check {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tutorial-tarjeta > * {
+  margin: 10px;
+}
+
+/* Botones */
+.tutorial-tarjeta .actualizar {
+  border: none;
+  background-color: #229954;
+}
+.tutorial-tarjeta .actualizar:hover {
+  cursor: pointer;
+  background-color: #27AE60;
+}
+
+.tutorial-tarjeta .eliminar {
+  border: none;
+  background-color: #e74c3c;
+}
+.tutorial-tarjeta .eliminar:hover {
+  cursor: pointer;
+  background-color: #EC7063;
+}
+
+.tutorial-tarjeta .alternar {
+  border: none;
+  background-color: #1F618D;
+}
+.tutorial-tarjeta .alternar:hover {
+  cursor: pointer;
+  background-color: #2980B9;
+}
+
+/* Tachar cuando el tutorial esta oculto */
+.tachado {
+  text-decoration:line-through;
+}
+
+/* Texto de que no hay tutoriales */
+.sin-tutoriales {
+  color: #212121;
+  margin: 30px auto;
+}
