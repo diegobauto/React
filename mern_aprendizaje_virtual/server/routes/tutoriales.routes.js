@@ -14,8 +14,7 @@ const router = Router();
 router.post("/", crearTutorial);
 router.get("/", obtenerTutoriales);
 
-//Uso del Middleware
-//Comprobación si existe primero el tutorial
+//Uso del Middleware (Comprobar si existe primero el tutorial)
 router.get("/:id", existeTutorial, obtenerTutorial);
 router.put("/:id", existeTutorial, actualizarTutorial);
 router.delete("/:id", existeTutorial, eliminarTutorial);

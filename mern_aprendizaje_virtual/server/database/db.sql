@@ -10,8 +10,8 @@ USE aprendizaje_virtual_db;
 -- Tabla para almacenar los tutoriales
 CREATE TABLE tutoriales (
     id_tutorial INT PRIMARY KEY AUTO_INCREMENT,
-    descripcion TEXT,
     titulo VARCHAR(255) NOT NULL,
+    descripcion TEXT,
     estado_publicacion ENUM('visible', 'oculto') NOT NULL DEFAULT 'visible'
 );
 

@@ -6,17 +6,14 @@ function Tutorial({ tutorial }) {
   const navigate = useNavigate(); //Redireccionar
 
   return (
-    <div className="tutorial-tarjeta">
-      <div className="check">
+    <article className="tarjeta">
+      <div className="tituloYcheck">
         <h2>{tutorial.titulo}</h2>
-        <p>{tutorial.estado_publicacion == "oculto" ? " " : "👁️"}</p>
+        <p>{tutorial.estado_publicacion == "oculto" ? "" : "👁️"}</p>
       </div>
-      <p className={tutorial.estado_publicacion == "oculto" ? "tachado" : ""}>{tutorial.descripcion}</p>
+      <p className={`descripcion${tutorial.estado_publicacion === "oculto" ? " check" : ""}`}>{tutorial.descripcion}</p>
       <div>
-        <button
-          className="actualizar"
-          onClick={() => navigate(`/editar_tutorial/${tutorial.id_tutorial}`)}
-        >
+        <button className="actualizar" onClick={() => navigate(`/editar_tutorial/${tutorial.id_tutorial}`)}>
           Actualizar
         </button>
         <button className="eliminar" onClick={() => eliminarTutorial(tutorial.id_tutorial)}>
@@ -26,7 +23,7 @@ function Tutorial({ tutorial }) {
           {tutorial.estado_publicacion == "oculto" ? "Mostrar" : "Ocultar"}
         </button>
       </div>
-    </div>
+    </article>
   );
 }
 

@@ -1,11 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import {
-  obtenerTutorialesSolicitud,
-  obtenerTutorialSolicitud,
-  crearTutorialSolicitud,
-  actualizarTutorialSolicitud,
-  eliminarTutorialSolicitud,
-  alternarTutorialEstado,
+  obtenerTutorialesAPI,
+  obtenerTutorialAPI,
+  crearTutorialAPI,
+  actualizarTutorialAPI,
+  eliminarTutorialAPI,
+  alternarEstadoTutorialAPI,
 } from "../api/tutoriales.api";
 
 const ContextoTutorial = createContext(); //Creación contexto
@@ -21,17 +21,20 @@ export const usarContexto = () => {
 };
 
 function TutorialContexto({ children }) {
-  //Estado para los tutoriales
-  const [tutoriales, setTutoriales] = useState([]);
+  const [tutoriales, setTutoriales] = useState([]); //Estado para los tutoriales
 
   const obtenerTutoriales = async () => {
-    const respuesta = await obtenerTutorialesSolicitud();
-    setTutoriales(respuesta.data);
+    try {
+      const respuesta = await obtenerTutorialesAPI();
+      setTutoriales(respuesta.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const obtenerTutorial = async (id_tutorial) => {
     try {
-      const respuesta = await obtenerTutorialSolicitud(id_tutorial);
+      const respuesta = await obtenerTutorialAPI(id_tutorial);
       return respuesta.data;
     } catch (error) {
       console.log(error.message);
@@ -40,7 +43,7 @@ function TutorialContexto({ children }) {
 
   const crearTutorial = async (tutorial) => {
     try {
-      await crearTutorialSolicitud(tutorial);
+      await crearTutorialAPI(tutorial);
     } catch (error) {
       console.log(error.message);
     }
@@ -48,7 +51,7 @@ function TutorialContexto({ children }) {
 
   const actualizarTutorial = async (id_tutorial, nuevosValores) => {
     try {
-      await actualizarTutorialSolicitud(id_tutorial, nuevosValores)
+      await actualizarTutorialAPI(id_tutorial, nuevosValores)
     } catch (error) {
       console.log(error.message)
     }
@@ -56,7 +59,7 @@ function TutorialContexto({ children }) {
 
   const eliminarTutorial = async (id_tutorial) => {
     try {
-      await eliminarTutorialSolicitud(id_tutorial);
+      await eliminarTutorialAPI(id_tutorial);
       obtenerTutoriales();
     } catch (error) {
       console.log(error.message);
@@ -67,7 +70,7 @@ function TutorialContexto({ children }) {
     try {
       const tutorial = await obtenerTutorial(id_tutorial);
       const estado = tutorial.estado_publicacion == "visible" ? "oculto" : "visible"
-      await alternarTutorialEstado(id_tutorial, estado);
+      await alternarEstadoTutorialAPI(id_tutorial, estado);
       obtenerTutoriales();
     } catch (error) {
       console.log(error.message);

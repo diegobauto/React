@@ -1,32 +1,19 @@
-# Prueba Técnica
+# Mis Tareas
 
 ## Descripción
-Prueba técnica, elaboración de una API REST en un contexto de aprendizaje virtual.
+Aplicación sencilla de gestión de tareas personales.
 
-Contiene:
-- Tutorial de un tema en específico (descripción, título, estado de publicación (visible/oculto)).
-- Detalles del tutorial (Fecha en que se creó y quién lo creó). 
-
-Funcionalidades: 
-- Registrar los tutoriales. (CREATE)
-- Listar los tutoriales, el detalle asociado al tutorial. (READ)
-- Modificación de un tutorial y su detalle. (UPDATE)
-- Eliminación de un tutorial y su detalle. (DELETE)
-
-Observaciones: 
-- Un tutorial tiene únicamente un detalle de tutorial.
-
-Observación general:
+Observaciones:
 - Se hace uso de patrón de arquitectura MVC en el servidor (server/), en donde los controladores (controllers) no conocen el modelo (models) al cual van a seguir. Por lo que se podria implementar cualquier otro modelo de datos (json, mongodb) y funcionaria de la misma manera.
 
 
 # Instrucciones de instalación
 1. Clonar el repositorio de GitHub proporcionado:
     Abrir una terminal en su máquina y navegar al directorio donde desea clonar el repositorio. Luego, ejecutar el siguiente comando para clonar el repositorio de GitHub (Es necesario el uso de git):
-    > ```git clone https://github.com/diegobauto/aprendizaje_virtual.git```
+    > ```git clone https://github.com/diegobauto/nombre-del-repositorio.git```
 
     Luego ingresar a la carpeta que se creó al clonar el repositorio.
-    > ```cd aprendizaje_virtual/```
+    > ```cd nombre-del-repositorio/capeta-de-la-app/```
 
 2. Instalar dependencias del Servidor (Express.js):
     Navegar al directorio del servidor (donde generalmente se encuentra un archivo package.json) utilizando el siguiente comando:
